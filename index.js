@@ -20,18 +20,86 @@ function caredSolve() {
         "2 nghiệm x1 = " + (-number2 - Math.sqrt(delta)) / (2 * number1) + ", x2 = " + (-number2 + Math.sqrt(delta)) / (2 * number1);
 }
 
-function isPrimeNumber() {
+function getPrimeNumber() {
+    document.getElementById("Result2").value = "";
     let number = document.getElementById('txtNumber4').value;
-    let counter = 0;
-    if (number == 2) {
-        document.getElementById("Result2").value = "Số nguyên tố";
-        return;
-    }
 
     for (i = 1; i <= number; i++) {
-        if (number % i == 0) {
-            counter++;
+        let counter = 0;
+        for (j = 2; j <= i / 2; j++) {
+            if (i % j == 0) {
+                counter++;
+                break;
+            }
+        }
+        if (counter == 0 && i != 1) {
+            document.getElementById("Result2").value += i + ",";
         }
     }
-    document.getElementById("Result2").value = counter == 2 ? "Số nguyên tố" : "Không phải số nguyên tố";
+}
+
+function getTotalFrom1Ton() {
+    document.getElementById("Result5").value = "";
+    let number = Number(document.getElementById('txtNumber5').value);
+    document.getElementById("Result5").value = (number * (number + 1)) / 2;
+}
+
+function getTotalSquareFrom1Ton() {
+    document.getElementById("Result6").value = "";
+    let number = Number(document.getElementById('txtNumber6').value);
+    let total = 0;
+    for (i = 1; i <= number; i++) {
+        total += i * i;
+    }
+    document.getElementById("Result6").value = total;
+}
+
+function getTotalOddNumberFrom1Ton() {
+    document.getElementById("Result7").value = "";
+    let number = Number(document.getElementById('txtNumber7').value);
+    let total = 0;
+    for (i = 1; i <= number; i += 2) {
+        total += i;
+    }
+    document.getElementById("Result7").value = total;
+}
+
+function isAllOddNumber() {
+    document.getElementById("Result8").value = "";
+    let number = document.getElementById('txtNumber8').value;
+    for (i = 0; i < number.length; i++) {
+        if (number[i] % 2 == 0) {
+            document.getElementById("Result8").value = "NO";
+            return;
+        }
+    }
+    document.getElementById("Result8").value = "YES";
+}
+
+function isSymmetryNumber() {
+    document.getElementById("Result9").value = "";
+    let number = document.getElementById('txtNumber9').value;
+    if (number.length % 2 == 0) {
+        document.getElementById("Result9").value = "NO";
+        return;
+    }
+    for (i = 0; i < number.length; i++) {
+        if (i == (number.length + 1) / 2) {
+            continue;
+        }
+        if (number.charAt[i] != number.charAt[number.length - i]) {
+            document.getElementById("Result9").value = "NO";
+            return;
+        }
+    }
+    document.getElementById("Result9").value = "YES";
+}
+
+function printMultiplicationTable() {
+    for (i = 2; i <= 9; i++) {
+        for (j = 1; j <= 10; j++) {
+            document.getElementById("Result10").value += i + " x " + j + " = " + i * j + '\n';
+        }
+        document.getElementById("Result10").value += "------------------------------------------------------" + '\n'
+    }
 }

@@ -83,11 +83,11 @@ function isSymmetryNumber() {
         document.getElementById("Result9").value = "NO";
         return;
     }
-    for (i = 0; i < number.length; i++) {
+    for (i = 0; i <= Math.floor(number.length / 2); i++) {
         if (i == (number.length + 1) / 2) {
             continue;
         }
-        if (number.charAt[i] != number.charAt[number.length - i]) {
+        if (number[i] != number[number.length - 1 - i]) {
             document.getElementById("Result9").value = "NO";
             return;
         }
